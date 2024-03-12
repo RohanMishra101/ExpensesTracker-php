@@ -26,18 +26,20 @@ $rows1 = mysqli_fetch_all($result1, MYSQLI_ASSOC);
         <section title="Expenses From Section">
             <div class="expensesDiv">
                 <h1>Add Expenses</h1>
-                <form action="" method="">
+                <form action="insertExp.php" method="POST">
                     <label for="categories">Categories :</label>
                     <select name="categories" id="">
                         <?php
                         foreach ($rows as $result) {
-                            echo "<option value='{$result['label']}'>" . $result['label'] . "</option>";
+                            echo "<option value='{$result['id']}'>"
+                                . $result['label'] . "</option>";
                         }
                         ?>
                     </select>
                     <label for="title">Title</label>
                     <input type="text" name="title">
                     <label for="">Amount</label>
+                    <input type="number" name="amount">
                     <label for="description">Description</label>
                     <input type="text" name="description">
                     <label for="expensesDate">Expenses Date</label>
@@ -51,9 +53,8 @@ $rows1 = mysqli_fetch_all($result1, MYSQLI_ASSOC);
         <section>
             <div>
                 <?php
-                echo "<table>";
+                echo "<table border='1'>";
                 echo "<tr>";
-                // echo "<th>S.N.</th>";
                 echo "<th>Title</th>";
                 echo "<th>Amt</th>";
                 echo "<th>Exp Type</th>";
